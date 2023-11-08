@@ -1,16 +1,20 @@
 # relic_tracker
 
-A new Flutter project.
+#Tugas 7
+1. Stateless widget adalah widget yang tidak dapat merubah nilai dirinya sendiri, sedangkan stateful widget adalah widget dinamis yang dapat melakukan perubahan terhadap dirinya sendiri
 
-## Getting Started
+2. widget yang digunakan antara lain:
+   Teks, Icon, Snackbar, Scaffold, Material, Inkwell, SingleChildScrollView, Container, dan Appbar
 
-This project is a starting point for a Flutter application.
+4. Implementasi dengan:
+- Pertama pergi ke direktori yang diinginkan untuk menyimpan proyek lalu membukanya dengan command prompt dan melakukan flutter create relic_tracker lalu pergi ke direktori tersebut dengan command prompt
 
-A few resources to get you started if this is your first Flutter project:
+- Memisahkan bagian utama program menjadi menu dan main dimana menu akan menjadi lokasi homepage lalu ,mengubah myHomePage mmenjadi stateless widget dan menghapus semua isinya kecuali build widget, lalu mendeklarasi shopitem yang menyimpan data teks dan icon menu, lalu mendeklarasi list items untuk menyimpan shopitem yang akan dibuat.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Lalu menyusun class untuk widget shopcard dengan constructor yang menerima shopitem dimana widget tersebut akan menampilkan teks dan icon dari shop item tersebut dalam sebuah material beserta inkwell.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Menyusun tampilan halaman utama di builder widget myHomepage dan menyusun Scaffold dengan appbar dibagian atas, body yang scrollable, dan didalam body tersebut text relic tracker menu ditambah dengan sebuah gridview yang berisi fungsi untuk menyusun shopcard
+
+-  Untuk snackbar, tinggal menambahkan fungsi onTap akan memanggil snackbar melalui scaffold mesenger
+
+-  lalu git init, bat repositori baru, menghubungkan remote, memastikan branch sudah benar, add, commit, push
