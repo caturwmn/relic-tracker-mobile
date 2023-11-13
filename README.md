@@ -1,6 +1,18 @@
 # relic_tracker
 
-#Tugas 7
+# Tugas 8
+1. Navigator.push() memasukan sebuah halaman baru ke bagian atas stack navigasi untuk mengganti halaman yang sedang dikunjungi, sedangkan Navigator.pushReplacement() menggantikan halaman yang berada di bagian atas stack navigasi dengan halaman yang akan dikunjungi. Contohnya
+
+2. Layout widget yang ada antara lain:
+
+3. Elemen Input yang digunakan antara lain:
+
+4. Clean architecture
+
+5. Implementasi dengan:
+- Membuat sebuah file dart baru yang akan menyimoan data tentang class left drawer yang akan bekerja sebagai 
+
+# Tugas 7
 1. Stateless widget adalah widget yang tidak dapat merubah nilai dirinya sendiri, sedangkan stateful widget adalah widget dinamis yang dapat melakukan perubahan terhadap dirinya sendiri
 
 2. widget yang digunakan antara lain:
