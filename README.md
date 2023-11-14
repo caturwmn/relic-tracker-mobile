@@ -1,16 +1,32 @@
 # relic_tracker
 
 # Tugas 8
-1. Navigator.push() memasukan sebuah halaman baru ke bagian atas stack navigasi untuk mengganti halaman yang sedang dikunjungi, sedangkan Navigator.pushReplacement() menggantikan halaman yang berada di bagian atas stack navigasi dengan halaman yang akan dikunjungi. Contohnya
+1. Navigator.push() memasukan sebuah halaman baru ke bagian atas stack navigasi untuk mengganti halaman yang sedang dikunjungi, sedangkan Navigator.pushReplacement() menggantikan halaman yang berada di bagian atas stack navigasi dengan halaman yang akan dikunjungi. Push biasa akan digunakan apabila pengguna akan dapat pergi ke halaman saat ini setelah pergi ke halaman lain dan menekan tombol back, sedangkan pushReplacement untuk memastikan pengguna kehalaman sebelum halaman yang mereka kunjungi saat ini setelah mereka pergi ke halaman selanjutnya dan menekan back.
 
 2. Layout widget yang ada antara lain:
+- Row untuk menyusun beberapa elemen pada suatu baris
+- Column untuk menyusun beberapa elemen pada suatu kolom
+- Align untuk menaruh sebuah element pada bagian tertentu widget tersebut
+- Padding yang menaruh element dengan padding tertentu dari widget tersebut
+- GridView yang menaruh tiap element di dalamnya pada suatu grid dangan jumlah baris dan koloom tertentu.
+- Container yang dapat memanipulasi posisi, ukuran, dan warna dari suau element
+- dll
 
-3. Elemen Input yang digunakan antara lain:
+4. Elemen Input yang digunakan antara lain:
+- Button untuk melakukan sesuatu setelah ditekan yang sesuai dengan teks dari button tersebut
+- ListTile sama seperti button namun untuk tampilan yang mirip seperti list
+- TextFormField untuk manambahkan data ke aplikasi dalam bentuk text dari user
 
-4. Clean architecture
+5. Clean architecture adalah sebuah prinsip pemrograman dimana sebuah aplikasi atau program dibagi menjadi berberapa lapis untuk memisahkan keperluan aplikasi ke tiap lapis tersebut untuk memudahkan proses maintenance dan perubahan pada aplikasi. Pada flutter, clean architecture diterapkan dengan mambagi proses pada 3 lapisan yaitu Domain, App, serta Data dimana Domain bekerja sebagai bagian logika utama dari aplikasi, App bekerja sebagai presentasi atau UI dari suatu aplikasi, dan Data berhubungan dengan segala proses transaksi data yang ada pada suatu aplikasi. 
 
-5. Implementasi dengan:
-- Membuat sebuah file dart baru yang akan menyimoan data tentang class left drawer yang akan bekerja sebagai 
+6. Implementasi dengan:
+- Membuat sebuah file dart yang akan menyimpan halaman bersifat stateful yang berisi form untuk menambahkan relic baru dimana class dari halaman tersebut akan di extend Statenya pada class yang menyimpan formkey dan atribut-atribut model yang akan digunakan pada form halaman tersebut
+- Lalu pada body dari state tersebut terdapat sebuah widget Form yang berisi key dari class halaman dengan child berupa SingleChildScrollable yang berisi sebuah child Column dengan isi berupa array yang berisi padding yang berisi TextFormField yang akan merubah nilai dari tiap atribut form apabila didalamnya dirubah
+- Lalu ditambahkan sebuah align pada array tersebut yang meletakan tombol Save di bawah tengah areanya yang apabila ditekan menampilkan sebuah alert dialog dengan text yang berisi tiap data yang dimasukkan ada form
+- Lalu menambahkan validator untuk tiap padding yang memastikan tiap field ada datanya dan mereturn null apabila kondisi tidak sesuai lalu menambahkan _formkey.currentState!.validate() di nlok if yang berisi fungsi onpress tombol save pada onpress dan mereset state tadi setelah selesai dengan _formkey.currentState!.reset
+- Menambahkan Navigator.push ke halaman sesuai di dalam onpress inkwell untuk tambah relic dengan if(item.name = nama halaman) sebagai validasi
+- Membuat sebuah file dart baru yang akan menyimpan data tentang class left drawer yang akan bekerja sebagai drawer untuk semua halaman pada aplikasi yang berisi tombol navigasi dangan nama tiap halaman yang bisa dituju dengan menggunakan Navigation.pushReplacement() untuk pergi ke halaman-halaman tersebut
+  
 
 # Tugas 7
 1. Stateless widget adalah widget yang tidak dapat merubah nilai dirinya sendiri, sedangkan stateful widget adalah widget dinamis yang dapat melakukan perubahan terhadap dirinya sendiri
