@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 import 'package:relic_tracker/widgets/left_drawer.dart';
+
+import 'menu.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -19,6 +25,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -191,39 +199,35 @@ class _ShopFormPageState extends State<ShopFormPage> {
                           backgroundColor:
                           MaterialStateProperty.all(Colors.indigo),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Produk berhasil tersimpan'),
-                                  content: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Nama: $_name'),
-                                        Text('Jumlah: $_amount'),
-                                        Text('Deskripsi: $_description'),
-                                        Text('Kelangkaan: $_rarity'),
-                                        Text('Main Stat: $_mainStat'),
-                                        Text('Jumlah Varian Ideal: $_idealAmount')
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      child: const Text('OK'),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            _formKey.currentState!.reset();
+                            // Kirim ke Django dan tunggu respons
+                            final response = await request.postJson(
+                                "http://catur-wira-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                                jsonEncode(<String, String>{
+                                  'name': _name,
+                                  'price': _amount.toString(),
+                                  'description': _description,
+                                  'best_rarity' : _rarity.toString(),
+                                  'ideal_main_stat' : _mainStat,
+                                  'ideal_variant_amount' : _idealAmount.toString(),
+                                }));
+                            if (response['status'] == 'success') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text("Relic baru berhasil disimpan!"),
+                              ));
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => MyHomePage()),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content:
+                                Text("Terdapat kesalahan, silakan coba lagi."),
+                              ));
+                            }
                           }
                         },
                         child: const Text(

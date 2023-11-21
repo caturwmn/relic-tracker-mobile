@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:relic_tracker/shoplist_form.dart';
+import 'package:relic_tracker/screens/shoplist_form.dart';
 import 'package:relic_tracker/widgets/left_drawer.dart';
+import '../widgets/shop_card.dart';
+import 'list_relic.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -67,68 +69,3 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class ShopItem {
-  final String name;
-  final IconData icon;
-
-  ShopItem(this.name, this.icon);
-}
-
-final List<ShopItem> items = [
-  ShopItem("Lihat Relic", Icons.checklist),
-  ShopItem("Tambah Relic", Icons.add_shopping_cart),
-  ShopItem("Logout", Icons.logout),
-];
-
-class ShopCard extends StatelessWidget {
-  final ShopItem item;
-
-  const ShopCard(this.item, {super.key}); // Constructor
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.indigo,
-      child: InkWell(
-        // Area responsive terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-          // Navigate ke route yang sesuai (tergantung jenis tombol)
-          if (item.name == "Tambah Relic") {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ShopFormPage(),
-                ));
-          }
-        },
-        child: Container(
-          // Container untuk menyimpan Icon dan Text
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
