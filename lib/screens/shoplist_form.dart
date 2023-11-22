@@ -19,7 +19,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
   String _name = "";
   int _amount = 0;
   String _description = "";
-  int _rarity = 0;
+  String _rarity = "";
   String _mainStat = "";
   int _idealAmount = 0;
 
@@ -127,7 +127,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                       ),
                       onChanged: (String? value) {
                         setState(() {
-                          _rarity = int.parse(value!);
+                          _rarity = value!;
                         });
                       },
                       validator: (String? value) {
@@ -206,9 +206,9 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                 "http://catur-wira-tugas.pbp.cs.ui.ac.id/create-flutter/",
                                 jsonEncode(<String, String>{
                                   'name': _name,
-                                  'price': _amount.toString(),
+                                  'amount': _amount.toString(),
                                   'description': _description,
-                                  'best_rarity' : _rarity.toString(),
+                                  'best_rarity' : _rarity,
                                   'ideal_main_stat' : _mainStat,
                                   'ideal_variant_amount' : _idealAmount.toString(),
                                 }));

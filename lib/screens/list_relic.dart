@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:relic_tracker/models/relic.dart';
+import 'package:relic_tracker/screens/relic_detail.dart';
 import 'package:relic_tracker/widgets/left_drawer.dart';
 
 class RelicPage extends StatefulWidget {
@@ -79,7 +80,28 @@ class _RelicPageState extends State<RelicPage> {
                             Text("${snapshot.data![index].fields.amount}"),
                             const SizedBox(height: 10),
                             Text(
-                                "${snapshot.data![index].fields.description}")
+                                "${snapshot.data![index].fields.description}"),
+                            ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.indigo),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                  builder: (context) => RelicDetailPage("${snapshot.data![index].fields.name}",
+                                      "${snapshot.data![index].fields.amount}","${snapshot.data![index].fields.description}",
+                                      "${snapshot.data![index].fields.best_rarity}","${snapshot.data![index].fields.ideal_main_stat}",
+                                      "${snapshot.data![index].fields.ideal_variant_amount}"
+                                      ),
+                                  ));
+                                },
+                              child: const Text(
+                                "Detail",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )
                           ],
                         ),
                       ));
