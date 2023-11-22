@@ -1,5 +1,34 @@
 # relic_tracker
 
+# Tugas 9
+1. Bisa namun hal tersebut lebih rumit karena kita harus memastikan field data yang kita ambil sudah benar secara manual dan data yang diambil tidak akan diketahui sistem sampai data tersebut sudah benar-benar diambil.
+  
+2. Fungsi CookieRequest bekerja untuk memastikan operasi yang dijalankan pada flutter yang sudah terintegrasi dengan flutter terjadi pada session yang tepat (bukan session dari orang lain yang juga melaksanakan hal yang sama).
+
+3. -
+
+4. Autentikasi pada flutter tersebut akan menerima input dari user berupa username dan password mereka lalu mengirim data tersebut dalam bentuk POST ke django untuk memangginl fungsi login yang akan memvalidasi data dari username yang diterima dan memastikan password yang masuk adalah password yang benar, lalu django mengirim response berupa sukses ke flutter dan flutter menerima response tersebut dan mengalihkan pengguna ke halaman menu
+
+5. Provider dan FutureBuilder
+   
+6. Implementasi dengan:
+- Pertama pergi ke url website, ternyata websitenya palsu maka saya selesaikan tugas dulu baru berusaha redeploy dan website bekerja dengan baik (sudah bukan palsu, mungkin).
+  
+- Lalu menginstall django-cors-headers pada proyek django dan menambahkan app baru bernama authenticate lalu membuat fungsi login pada views authenticate yang menerima request post berisi username & password dan melakukan routing pada urls.py app lalu pada urls.py proyek. Pada settings.py proyek melakukan beberapa perubahan pada installed apps dengan menambah authenticate dan corsheaders, lalu menambahkan corsheaders.middleware.CorsMiddleware pada list middleware settings dan menambah variabel mengenai cors seperti (semua dalam format variabel static (SEUATU_SESUATU)) cors allow all origins, cors allow credentials, csrf cookies secure, dan session cookie secure dengan value true serta csrf cookies samesite, session cookies samesite dengan value valse.
+
+- Lalu pada flutter menambahkan flutter pub add provider, pbp_django_path, http. Lalu pada main.dart dibuat widget provider yang menyusun cookies yang childnya merupakan material dari app tadi sebelumnya. Lalu membuat login.dart pada lib/screens yang berisi halaman yang akan melakukan request login ke website django dan mengubah home pada main.dart menjadi LoginPage() yaitu constructor untuk halaman login.
+
+- Lalu melakukan runserver pada lokal dan pergi ke halaman data json, mengcopy, pergi ke laman Quicktype, masukan kode json, atur bahasa ke dart, lalu copy & paste ke file relic.dart pada lib/models.
+
+- Lalu melakukan perubahan ada manifest android agar membolehkan penggunaan internet dan membuat file list_relic.dart yang akan menampilkan listview berisi data nama, jumlah dan deskripsi relic yang terdaftar serta memasukkan tombol ke halaman tersebut pada left_drawer.dart serta pada inkwell di halaman utama.
+
+- Menambahkan detailed view
+
+- Lalu membuat fungsi create_flutter pada django dengan format request yang benar untuk membuat relic baru melalui flutter serta routing url dan menghubungkan shoplist_form.dart ke fungsi terrsebut dengan menambahkan request cookies dan mengubah fungsi onpressed pada form menjadi async dan mengirimkan data json ketika ditekan ke web django.
+
+- Lalu menambahkan fungsi logout pada django dan menghubungkannya dengan flutter seperti biasa.
+ 
+
 # Tugas 8
 1. Navigator.push() memasukan sebuah halaman baru ke bagian atas stack navigasi untuk mengganti halaman yang sedang dikunjungi, sedangkan Navigator.pushReplacement() menggantikan halaman yang berada di bagian atas stack navigasi dengan halaman yang akan dikunjungi. Push biasa akan digunakan apabila pengguna akan dapat pergi ke halaman saat ini setelah pergi ke halaman lain dan menekan tombol back, sedangkan pushReplacement untuk memastikan pengguna kehalaman sebelum halaman yang mereka kunjungi saat ini setelah mereka pergi ke halaman selanjutnya dan menekan back.
 
