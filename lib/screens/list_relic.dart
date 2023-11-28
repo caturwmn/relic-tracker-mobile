@@ -15,7 +15,7 @@ class RelicPage extends StatefulWidget {
 class _RelicPageState extends State<RelicPage> {
   Future<List<Relic>> fetchProduct() async {
     var url = Uri.parse(
-        'http://catur-wira-tugas.pbp.cs.ui.ac.id/json/');
+        'https://catur-wira-tugas.pbp.cs.ui.ac.id/json/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -92,8 +92,8 @@ class _RelicPageState extends State<RelicPage> {
                                   MaterialPageRoute(
                                   builder: (context) => RelicDetailPage("${snapshot.data![index].fields.name}",
                                       "${snapshot.data![index].fields.amount}","${snapshot.data![index].fields.description}",
-                                      "${snapshot.data![index].fields.best_rarity}","${snapshot.data![index].fields.ideal_main_stat}",
-                                      "${snapshot.data![index].fields.ideal_variant_amount}"
+                                      "${snapshot.data![index].fields.bestRarity}","${snapshot.data![index].fields.idealMainStat}",
+                                      "${snapshot.data![index].fields.idealVariantAmount}"
                                       ),
                                   ));
                                 },

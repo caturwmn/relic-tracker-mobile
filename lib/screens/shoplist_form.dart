@@ -203,7 +203,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                           if (_formKey.currentState!.validate()) {
                             // Kirim ke Django dan tunggu respons
                             final response = await request.postJson(
-                                "http://catur-wira-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                                "https://catur-wira-tugas.pbp.cs.ui.ac.id/auth/create-flutter/",
                                 jsonEncode(<String, String>{
                                   'name': _name,
                                   'amount': _amount.toString(),

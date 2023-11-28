@@ -31,40 +31,40 @@ class RelicDetailPage extends StatelessWidget {
                 Text(
                   name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   amount,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   description,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   bestRarity,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   idealMainStat,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   idealVariantAmount,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     child: const Text(
-                      "Detail",
-                      style: TextStyle(color: Colors.white),
+                      "Back",
+                      style: TextStyle(color: Colors.black),
                     ),
                 ),
               ],
